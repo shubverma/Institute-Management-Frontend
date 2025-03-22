@@ -13,15 +13,8 @@ const FeeSubmissionPage = () => {
     axios
       .get('http://localhost:5555/feeSubmissions')
       .then((response) => {
-        const submissionsWithStudentId = response.data.map(async submission => {
-          const studentResponse = await axios.get(`http://localhost:5555/students/${submission.student}`);
-          const studentData = studentResponse.data.student;
-          return { ...submission, studentId: studentData.studentId };
-        });
-        Promise.all(submissionsWithStudentId).then(submissions => {
-          setFeeSubmissions(submissions);
+        setFeeSubmissions(response.data);
           setLoading(false);
-        });
       })
       .catch((error) => {
         console.log(error);
