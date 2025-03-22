@@ -37,7 +37,7 @@ const FeeSubmissionPage = () => {
         <table className='w-full border sperate border-spacing-2'>
           <thead>
             <tr>
-              <th className='border border-slate-600 rounded-md'>Student ID</th>
+              <th className='border border-slate-600 rounded-md'>Student Name</th>
               <th className='border border-slate-600 rounded-md'>Submitted Fees</th>
               <th className='border border-slate-600 rounded-md'>Submission Date</th>
               <th className='border border-slate-600 rounded-md'>Actions</th>
@@ -47,7 +47,7 @@ const FeeSubmissionPage = () => {
             {feeSubmissions.map((submission) => (
               <tr key={submission._id} className='h-8'>
                 <td className='border border-slate 700 rounded-md text-center'>
-                  {submission.studentId}
+                  {submission.student.studentName}
                 </td>
                 <td className='border border-slate 700 rounded-md text-center'>
                   {submission.submitted_Fees}
