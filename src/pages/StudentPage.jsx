@@ -1,28 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../components/spinner';
 import { Link } from 'react-router-dom';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
+import { fetchStudentsRequest } from '../store/actions/studentActions';
 
 const StudentPage = () => {
-  const [students, setStudents] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const { students, loading } = useSelector((state) => state.students);
 
   useEffect(() => {
-    setLoading(true);
-    axios
-      .get('http://localhost:5555/students/')
-      .then((response) => {
-        setStudents(response.data.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setLoading(false);
-      });
-  }, []);
+    dispatch(fetchStudentsRequest());
+  }, [dispatch]);
 
   return (
     <div className='p-4'>
@@ -64,15 +55,15 @@ const StudentPage = () => {
                   {student.course ? student.course.name : 'Unknown'}
                 </td>
                 <td className='border border-slate 700 rounded-md text-center'>
-                  <div className='border-slate-700 rounded-md text-center'>
+                  <div className='flex justify-center items-center gap-x-2 border-slate-700 rounded-md text-center'>
                     <Link to={`/students/${student._id}`}>
-                      <BsInfoCircle className='text-2xl text-green-800' />
+                      <BsInfoCircle className='text-l text-green-800' />
                     </Link>
                     <Link to={`/students/edit/${student._id}`}>
-                      <AiOutlineEdit className='text-2xl text-green-800' />
+                      <AiOutlineEdit className='text-l text-green-800' />
                     </Link>
                     <Link to={`/students/delete/${student._id}`}>
-                      <MdOutlineDelete className='text-2xl text-red-800' />
+                      <MdOutlineDelete className='text-l text-red-800' />
                     </Link>
                   </div>
                 </td>

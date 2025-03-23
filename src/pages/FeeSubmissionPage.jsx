@@ -1,26 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../components/spinner';
 import { Link } from 'react-router-dom';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
+import { fetchFeesRequest } from '../store/actions/feeActions';
 
 const FeeSubmissionPage = () => {
-  const [feeSubmissions, setFeeSubmissions] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const { fees, loading } = useSelector((state) => state.fees);
 
   useEffect(() => {
-    setLoading(true);
-    axios
-      .get('http://localhost:5555/feeSubmissions')
-      .then((response) => {
-        setFeeSubmissions(response.data);
-          setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setLoading(false);
-      });
-  }, []);
+    dispatch(fetchFeesRequest());
+  }, [dispatch]);
 
   return (
     <div className='p-4'>
@@ -44,7 +35,7 @@ const FeeSubmissionPage = () => {
             </tr>
           </thead>
           <tbody>
-            {feeSubmissions.map((submission) => (
+            {fees.map((submission) => (
               <tr key={submission._id} className='h-8'>
                 <td className='border border-slate 700 rounded-md text-center'>
                   {submission.student.studentName}
@@ -56,9 +47,11 @@ const FeeSubmissionPage = () => {
                   {new Date(submission.submission_Date).toLocaleDateString()}
                 </td>
                 <td className='border border-slate 700 rounded-md text-center'>
-                  <Link to={`/feeSubmissions/delete/${submission._id}`}>
-                    <MdOutlineDelete className='text-2xl text-red-800' />
-                  </Link>
+                  <div className='flex justify-center items-center gap-x-2 border-slate-700 rounded-md text-center'>
+                    <Link to={`/feeSubmissions/delete/${submission._id}`}>
+                      <MdOutlineDelete className='text-l text-red-800' />
+                    </Link>
+                  </div>
                 </td>
               </tr>
             ))}
