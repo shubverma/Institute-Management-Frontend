@@ -1,14 +1,14 @@
 import { all } from 'redux-saga/effects';
 import studentSaga from './studentSaga';
 import courseSaga from './courseSaga';
-import feeSaga from './feeSaga';// ...import other sagas...
-// ...import other sagas...
+import feeSaga from './feeSaga';
 
 function* rootSaga() {
   yield all([
     studentSaga(),
-    courseSaga(),   // ...other sagas...
-    feeSaga(),  ]);
-    // ...other sagas...
+    courseSaga(),   
+    feeSaga(), 
+    // ...other reducers... 
+  ]);
 }
 export default rootSaga;
