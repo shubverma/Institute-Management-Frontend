@@ -14,11 +14,11 @@ const FeeSubmissionPage = () => {
   }, [dispatch]);
 
   return (
-    <div className='p-4'>
-      <div className='flex justify-center items-center gap-x-4'>
-        <h1 className='text-3xl my-8'>Fee Submissions List</h1>
+    <div>
+      <div className='flex justify-center items-center gap-x-2 mb-2'>
+        <h1 className='text-xl'>Fee Submissions</h1>
         <Link to='/feeSubmissions/create'>
-          <MdOutlineAddBox className='text-sky-800 text-4xl' />
+          <MdOutlineAddBox className='text-sky-800 text-xl' />
         </Link>
       </div>
 

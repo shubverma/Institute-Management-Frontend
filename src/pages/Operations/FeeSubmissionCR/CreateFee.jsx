@@ -46,15 +46,15 @@ const CreateFeeSubmission = () => {
   };
 
   return (
-    <div className='p-4'>
-      <h1 className='text-3xl my-4'>Create Fee Submission</h1>
-      <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
-        <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Student</label>
+    <div>
+      <h1 className='text-xl text-center mb-2'>Create Fee Submission</h1>
+      <div className='shadow-lg flex flex-col text-sm border rounded-2xl w-full max-w-lg p-6 mx-auto bg-white'>
+        <div className='my-1'>
+          <label className='block mb-1 text-gray-600'>Student</label>
           <select
             value={studentId}
             onChange={(e) => setStudentId(e.target.value)}
-            className='border-2 border-gray-500 px-4 py-2 w-full'
+            className='border border-gray-300 px-2 py-1 w-full rounded'
           >
             <option value=''>Select a student</option>
             {Array.isArray(students) && students.map(student => (
@@ -62,25 +62,25 @@ const CreateFeeSubmission = () => {
             ))}
           </select>
         </div>
-        <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Submitted Fees</label>
+        <div className='my-1'>
+          <label className='block mb-1 text-gray-600'>Submitted Fees</label>
           <input
             type='number'
             value={submittedFees}
             onChange={(e) => setSubmittedFees(e.target.value)}
-            className='border-2 border-gray-500 px-4 py-2 w-full'
+            className='border border-gray-300 px-2 py-1 w-full rounded'
           />
         </div>
-        <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Submission Date</label>
+        <div className='my-1'>
+          <label className='block mb-1 text-gray-600'>Submission Date</label>
           <input
             type='date'
             value={submissionDate}
             onChange={(e) => setSubmissionDate(e.target.value)}
-            className='border-2 border-gray-500 px-4 py-2 w-full'
+            className='border border-gray-300 px-2 py-1 w-full rounded'
           />
         </div>
-        <button className='p-2 bg-sky-300 m-8' onClick={handleSaveFeeSubmission}>
+        <button className='bg-sky-500 hover:bg-sky-600 text-white py-1 px-2 rounded self-start text-sm mt-2' onClick={handleSaveFeeSubmission}>
           Save
         </button>
       </div>

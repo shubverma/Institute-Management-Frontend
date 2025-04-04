@@ -26,9 +26,8 @@ const ShowStudent = () => {
   }, [id]); 
 
   return (
-    <div className='p-4'>
-      <BackButton />
-      <h1 className='text-3xl my-4'>Student Details</h1>
+    <div>
+      <h1 className='text-xl'>Student Details</h1>
       {loading ? (
         <Spinner />
       ) : (
