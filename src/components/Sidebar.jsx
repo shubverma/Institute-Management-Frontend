@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Home, BookOpen, DollarSign, Menu } from "lucide-react";
+import { Home, BookOpen, DollarSign, Menu, Users } from "lucide-react";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -17,10 +17,19 @@ const Sidebar = () => {
       <ul className="space-y-4">
         <li>
           <Link
-            to="/students"
+            to="/home"
             className="flex items-center space-x-2 hover:text-gray-400"
           >
             <Home />
+            {isOpen && <span>Home</span>}
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/students"
+            className="flex items-center space-x-2 hover:text-gray-400"
+          >
+            <Users />
             {isOpen && <span>Students</span>}
           </Link>
         </li>
